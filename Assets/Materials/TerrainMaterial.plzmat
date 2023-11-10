@@ -1,0 +1,19 @@
+Material: TerrainMaterial
+Uuid: 16383961043865258486
+diffuse:
+  Type: diffuse
+  Path: C:\Users\Giovane\Desktop\GrassUV01.png
+  Rgba: [.inf, .inf, .inf, .inf]
+specular:
+  Type: specular
+  Path: ""
+  Rgba: [255, 255, 255, 255]
+height:
+  Type: height
+  Path: ""
+  Rgba: [255, 255, 255, 255]
+normal:
+  Type: normal
+  Path: ""
+  Rgba: [255, 255, 255, 255]
+Shininess: 3

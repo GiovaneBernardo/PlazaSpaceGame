@@ -1,0 +1,9 @@
+C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Binaries\SpaceGame.dll
+C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Binaries\SpaceGame.pdb
+C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Binaries\PlazaScriptCore.dll
+C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Binaries\PlazaScriptCore.pdb
+C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Intermediates\Debug\SpaceGame.csproj.AssemblyReference.cache
+C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Intermediates\Debug\SpaceGame.csproj.CoreCompileInputs.cache
+C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Intermediates\Debug\SpaceGame.csproj.CopyComplete
+C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Intermediates\Debug\SpaceGame.dll
+C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Intermediates\Debug\SpaceGame.pdb
