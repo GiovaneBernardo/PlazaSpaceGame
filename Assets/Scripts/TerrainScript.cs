@@ -185,13 +185,13 @@ public class TerrainScript : Entity
         Mesh newMesh = GenerateTerrainMesh();
         Console.WriteLine("Changing Mesh 2");
         this.GetComponent<MeshRenderer>().mesh = newMesh;
-        this.GetComponent<Collider>().AddShape(ColliderShapeEnum.MESH);
-        /*        foreach (Vector3 vertex in newMesh.Vertices)
-                {
-                    Instantiate(FindEntityByName("Cube")).GetComponent<Transform>().Translation = vertex;
-                    //Instantiate(FindEntityByName("Cube")).GetComponent<Transform>().Translation = vertex;
-                }*/
+        //this.GetComponent<Collider>().AddShape(ColliderShapeEnum.MESH);
         Console.WriteLine("Finished");
+
+/*        foreach(Vector3 vertex in newMesh.Vertices)
+        {
+            Instantiate(FindEntityByName("Cube")).GetComponent<Transform>().Translation = vertex;
+        }*/
     }
 
     public void OnUpdate()

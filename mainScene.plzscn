@@ -31,6 +31,27 @@ Entities:
         Shapes:
           - Shape: 0
             MeshUuid: 0
+  - Entity: 12248020936425812065
+    Name: EmptyChunk
+    ParentID: 16783529577957642553
+    Components:
+      TransformComponent:
+        Position: [0, 0, 0]
+        Rotation: [0, 0, 0]
+        Scale: [1, 1, 1]
+      MeshRendererComponent:
+        Uuid: 12248020936425812065
+        CastShadows: true
+        AiMeshName: ""
+        MeshName: ""
+        Instanced: true
+        MeshId: 1
+        Material: 16383961043865258486
+      ColliderComponent:
+        Uuid: 12248020936425812065
+        Shapes:
+          - Shape: 0
+            MeshUuid: 0
   - Entity: 15157237333596116944
     Name: Plane
     ParentID: 16783529577957642553
@@ -196,35 +217,88 @@ Entities:
             Uuid: 7945868513484452784
             SerializedFields:
               []
+  - Entity: 2417430530170495842
+    Name: ChunkManager
+    ParentID: 16783529577957642553
+    Components:
+      TransformComponent:
+        Position: [0, 0, 0]
+        Rotation: [0, 0, 0]
+        Scale: [1, 1, 1]
+      MeshRendererComponent:
+        Uuid: 2417430530170495842
+        CastShadows: true
+        AiMeshName: ""
+        MeshName: ""
+        Instanced: true
+        MeshId: 1
+        Material: 0
+      ColliderComponent:
+        Uuid: 2417430530170495842
+        Shapes:
+          - Shape: 0
+            MeshUuid: 0
+      CsScriptComponent:
+        Uuid: 2417430530170495842
+        Scripts:
+          - Name: ChunkManager
+            Path: \Assets\Scripts\ChunkManager.cs
+            Uuid: 2417430530170495842
+            SerializedFields:
+              - Name: playerLastPosition
+                Access: 1
+                Type: 17
+              - Name: chunks
+                Access: 1
+                Type: 21
+              - Name: perm
+                Access: 17
+                Type: 29
+              - Name: scale
+                Access: 1
+                Type: 17
+              - Name: playerTransform
+                Access: 1
+                Type: 18
 Models:
   []
 Meshes:
-  - Mesh: 11016254716383455655
+  - Mesh: 14814125946463635273
     MeshId: 1
     Name: ""
     TemporaryMesh: false
     ModelUuid: 0
-  - Mesh: 5506540455530814004
+  - Mesh: 18278848923912407238
     MeshId: 3
     Name: ""
     TemporaryMesh: false
     ModelUuid: 0
-  - Mesh: 11016254716383455655
+  - Mesh: 14814125946463635273
     MeshId: 1
     Name: ""
     TemporaryMesh: false
     ModelUuid: 0
-  - Mesh: 11016254716383455655
+  - Mesh: 14814125946463635273
     MeshId: 1
     Name: ""
     TemporaryMesh: false
     ModelUuid: 0
-  - Mesh: 11016254716383455655
+  - Mesh: 14814125946463635273
     MeshId: 1
     Name: ""
     TemporaryMesh: false
     ModelUuid: 0
-  - Mesh: 11016254716383455655
+  - Mesh: 14814125946463635273
+    MeshId: 1
+    Name: ""
+    TemporaryMesh: false
+    ModelUuid: 0
+  - Mesh: 14814125946463635273
+    MeshId: 1
+    Name: ""
+    TemporaryMesh: false
+    ModelUuid: 0
+  - Mesh: 14814125946463635273
     MeshId: 1
     Name: ""
     TemporaryMesh: false

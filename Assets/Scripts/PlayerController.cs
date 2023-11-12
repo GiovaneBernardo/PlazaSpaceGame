@@ -12,23 +12,58 @@ using System.Globalization;
 
 public class PlayerController : Entity
 {
+    public float speed = 10.0f;
     Transform transform;
     Transform cameraTransform;
     Entity entityToInstantiate;
     private DateTime lastShot = DateTime.Now;
+    ChunkManager chunkManager;
     public void OnStart()
     {
         transform = FindEntityByName("Body").GetComponent<Transform>();
         cameraTransform = FindEntityByName("Camera").GetComponent<Transform>();
         entityToInstantiate = FindEntityByName("Sphere");
-        Cursor.Hide();
+        chunkManager = FindEntityByName("ChunkManager").GetScript<ChunkManager>();
+        //Cursor.Hide();
     }
 
+    public Vector2 lastChunkQuery;
+
+    static float RoundToClosestMultiple(double number, double multiple)
+    {
+        return (float)(Math.Ceiling(number / multiple) * multiple);
+    }
+    public void CheckNearbyChunks()
+    {
+        Vector2 closestChunkCoordinate = new Vector2(RoundToClosestMultiple(this.transform.Translation.X, chunkManager.sizeXZ * chunkManager.scaleXZ), RoundToClosestMultiple(this.transform.Translation.Z, chunkManager.sizeXZ * chunkManager.scaleXZ));
+        //closestChunkCoordinate.Y += chunkManager.sizeXZ * chunkManager.scaleXZ;
+        if (!chunkManager.chunksDictionary.ContainsKey(closestChunkCoordinate))
+        {
+            chunkManager.GenerateChunkAt(new Vector2(closestChunkCoordinate.X / (chunkManager.sizeXZ * chunkManager.scaleXZ), closestChunkCoordinate.Y / (chunkManager.sizeXZ * chunkManager.scaleXZ)));
+        }
+
+        /* Check if there are more empty chunks on the sides */
+        Vector2 distance = new Vector2(chunkManager.sizeXZ * chunkManager.scaleXZ);
+        for(int i = 0; i < 1; ++i)
+        {
+            CheckChunkAt(closestChunkCoordinate + new Vector2(distance.X, 0.0f));
+            CheckChunkAt(closestChunkCoordinate + new Vector2(-distance.X, 0.0f));
+            CheckChunkAt(closestChunkCoordinate + new Vector2(0.0f, distance.Y));
+            CheckChunkAt(closestChunkCoordinate + new Vector2(0.0f, -distance.Y));
+        }
+    }
+
+    public void CheckChunkAt(Vector2 position)
+    {
+        if (!chunkManager.chunksDictionary.ContainsKey(position))
+        {
+            chunkManager.GenerateChunkAt(new Vector2(position.X / (chunkManager.sizeXZ * chunkManager.scaleXZ), position.Y / (chunkManager.sizeXZ * chunkManager.scaleXZ)));
+        }
+    }
 
 
     public void OnUpdate()
     {
-        float speed = 10.0f;
         float sensitivity = 10.0f;
         if (Input.IsKeyDown(KeyCode.W))
         {
@@ -83,6 +118,12 @@ public class PlayerController : Entity
             Physics.RaycastHit hit = Physics.Raycast(transform.Translation, Vector3.Normalize(cameraTransform.LeftVector), 1000);
             if (hit.hitUuid != 0)
                 new Entity(hit.hitUuid).GetScript<TurretScript>().OnKeyPressedAndLooking();
+        }
+
+        if (Vector2.Distance(new Vector2(this.GetComponent<Transform>().Translation.X, this.GetComponent<Transform>().Translation.Z), lastChunkQuery) > chunkManager.sizeXZ * chunkManager.scaleXZ)
+        {
+            lastChunkQuery = new Vector2(this.GetComponent<Transform>().Translation.X, this.GetComponent<Transform>().Translation.Z);
+            CheckNearbyChunks();
         }
     }
 

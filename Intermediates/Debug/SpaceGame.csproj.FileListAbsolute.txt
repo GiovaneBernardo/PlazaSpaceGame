@@ -7,3 +7,7 @@ C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Intermediates\Debug\Spac
 C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Intermediates\Debug\SpaceGame.csproj.CopyComplete
 C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Intermediates\Debug\SpaceGame.dll
 C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Intermediates\Debug\SpaceGame.pdb
+C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Binaries\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Binaries\System.Threading.Tasks.Extensions.dll
+C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Binaries\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Binaries\System.Threading.Tasks.Extensions.xml

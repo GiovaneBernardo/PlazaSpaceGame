@@ -1,14 +1,16 @@
 Script Manager Path: C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Scripts.plzscp
 Scripts:
+  - Script: C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Assets\Scripts\BulletScript.cs
+    Date: 20231110140543.8335431
   - Script: C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Assets\Scripts\FunctionalBlockScript.cs
-    Date: 20231108190220.0991354
+    Date: 20231110140543.8335736
   - Script: C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Assets\Scripts\PlayerController.cs
-    Date: 20231108190220.0991621
+    Date: 20231110140543.8335946
   - Script: C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Assets\Scripts\TerrainScript.cs
-    Date: 20231108190220.0991812
+    Date: 20231110140543.8336139
   - Script: C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Assets\Scripts\TurretScript.cs
-    Date: 20231108190245.4056390
+    Date: 20231110140543.8336394
   - Script: C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Assets\Scripts\Unnamed.cs
-    Date: 20231108190245.4056390
+    Date: 20231110140843.5336899
   - Script: C:\Users\Giovane\Desktop\Workspace\PlazaGames\SpaceGame\Intermediates\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
-    Date: 20231108190220.0994410
+    Date: 20231110140543.8339845
