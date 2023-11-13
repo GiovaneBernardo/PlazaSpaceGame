@@ -9,14 +9,15 @@ using Plaza;
 using static Plaza.InternalCalls;
 using static Plaza.Input;
 using static ChunkManager;
+using System.Diagnostics;
 
 public class ChunkManager : Entity
 {
-    public int scaleXZ = 20;
+    public int scaleXZ = 1;
     public int sizeXZ = 256;
     public Dictionary<Vector2, Chunk> chunksDictionary = new Dictionary<Vector2, Chunk>();
-    public float frequency = 0.025f;
-    public float amplitude = 0.07f;
+    public float frequency = 0.020f;
+    public float amplitude = 0.06f;
     public float octaves = 8;
     public float persistence = 3;
     static void Shuffle(int[] arrayToShuffle)
@@ -115,6 +116,8 @@ public class ChunkManager : Entity
     Vector3 scale = new Vector3(20.0f, 12.0f, 20.0f);
     Mesh GenerateTerrainMesh(float xDisplacement, float zDisplacement)
     {
+        Stopwatch stopwatch0 = new Stopwatch();
+        stopwatch0.Start();
         Mesh mesh = new Mesh();
         List<Vector3> vertices = new List<Vector3>();
         int depth = 256;
@@ -122,10 +125,12 @@ public class ChunkManager : Entity
 
         int seed = 235324; // Replace 42 with your desired seed value
 
+        Stopwatch stopwatch1 = new Stopwatch();
+        stopwatch1.Start();
         Random random = new Random(seed);
-        for (int z = 0; z < depth; z++)
+        for (int z = -(depth / 2); z < depth / 2; z++)
         {
-            for (int x = 0; x < width; x++)
+            for (int x = -(width / 2); x < width / 2; x++)
             {
                 //float result = InternalCalls.MeshRenderer_GetHeight(this.Uuid, x, z);
                 float n = 0.0f;
@@ -143,7 +148,10 @@ public class ChunkManager : Entity
                 vertices.Add(new Vector3(x * scale.X, result * scale.Y, z * scale.Z));
             }
         }
+        stopwatch1.Stop();
 
+        Stopwatch stopwatch2 = new Stopwatch();
+        stopwatch2.Start();
         List<int> triangles = new List<int>();
         for (int z = 0; z < depth - 1; z++)
         {
@@ -165,14 +173,20 @@ public class ChunkManager : Entity
                 triangles.Add(bottomRight);
             }
         }
+        stopwatch2.Stop();
 
         // Create the uvs
+        Stopwatch stopwatch3 = new Stopwatch();
+        stopwatch3.Start();
         List<Vector2> uvs = new List<Vector2>();
         for (int i = 0; i < vertices.Count; i++)
         {
             float completionPercent = 1 / (vertices.Count - 1);
             uvs.Add(new Vector2(completionPercent, completionPercent));
         }
+        stopwatch3.Stop();
+        Stopwatch stopwatch4 = new Stopwatch();
+        stopwatch4.Start();
         Vector3[] normals = new Vector3[vertices.Count];
         for (int i = 0; i < triangles.Count; i += 3)
         {
@@ -187,12 +201,22 @@ public class ChunkManager : Entity
             normals[index1] += normal;
             normals[index2] += normal;
         }
-
+        stopwatch4.Stop();
+        Stopwatch stopwatch5 = new Stopwatch();
+        stopwatch5.Start();
         mesh.Vertices = vertices.ToArray();
         mesh.Indices = triangles.ToArray();
         mesh.Normals = normals.ToArray();
         mesh.Uvs = uvs.ToArray();
+        stopwatch5.Stop();
 
+        stopwatch0.Stop();
+        Console.WriteLine("Vertices: " + stopwatch1.Elapsed.TotalMilliseconds);
+        Console.WriteLine("Triangles: " + stopwatch2.Elapsed.TotalMilliseconds);
+        Console.WriteLine("Uvs: " + stopwatch3.Elapsed.TotalMilliseconds);
+        Console.WriteLine("Normals: " + stopwatch4.Elapsed.TotalMilliseconds);
+        Console.WriteLine("ToArray: " + stopwatch5.Elapsed.TotalMilliseconds);
+        Console.WriteLine("Complete: " + stopwatch0.Elapsed.TotalMilliseconds);
         return mesh;
     }
 
@@ -210,9 +234,9 @@ public class ChunkManager : Entity
         Entity newChunk = Instantiate(FindEntityByName("EmptyChunk"));
         float finalSize = sizeXZ * scaleXZ;
         newChunk.Name = "Chunk" + (position.X / finalSize + position.Y / finalSize);
-        newChunk.GetComponent<MeshRenderer>().mesh = GenerateTerrainMesh(position.X * 255.0f, position.Y * 255.0f);
+        newChunk.GetComponent<MeshRenderer>().mesh = GenerateTerrainMesh(position.X * (sizeXZ - 1), position.Y * (sizeXZ - 1));
         newChunk.GetComponent<MeshRenderer>().SetMaterial(0);
-        newChunk.GetComponent<Transform>().Translation = new Vector3(255.0f * scale.X * position.X, 0.0f, 255.0f * scale.Z * position.Y);
+        newChunk.GetComponent<Transform>().Translation = new Vector3((sizeXZ - 1) * scale.X * position.X, 0.0f, (sizeXZ - 1) * scale.Z * position.Y);
         newChunk.GetComponent<Collider>().AddShape(ColliderShapeEnum.MESH);
 
         Chunk chunk = new Chunk();

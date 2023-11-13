@@ -124,6 +124,10 @@ Entities:
             Path: \Assets\Scripts\PlayerController.cs
             Uuid: 14053157801212736485
             SerializedFields:
+              - Name: speed
+                Value: 10
+                Access: 6
+                Type: 12
               - Name: transform
                 Access: 1
                 Type: 18
@@ -133,9 +137,19 @@ Entities:
               - Name: entityToInstantiate
                 Access: 1
                 Type: 18
+              - Name: chunkManager
+                Access: 1
+                Type: 18
               - Name: lastShot
                 Access: 1
                 Type: 17
+              - Name: lastChunkQuery
+                Access: 6
+                Type: 17
+              - Name: generatedChunks
+                Value: 0
+                Access: 1
+                Type: 8
   - Entity: 632664967437338523
     Name: Turret
     ParentID: 16783529577957642553
@@ -245,61 +259,109 @@ Entities:
             Path: \Assets\Scripts\ChunkManager.cs
             Uuid: 2417430530170495842
             SerializedFields:
-              - Name: playerLastPosition
-                Access: 1
-                Type: 17
+              - Name: Permutation
+                Access: 17
+                Type: 29
+              - Name: chunksDictionary
+                Access: 6
+                Type: 21
               - Name: chunks
                 Access: 1
                 Type: 21
-              - Name: perm
-                Access: 17
-                Type: 29
+              - Name: scaleXZ
+                Value: 20
+                Access: 6
+                Type: 8
+              - Name: octaves
+                Value: 8
+                Access: 6
+                Type: 12
+              - Name: amplitude
+                Value: 0.0700000003
+                Access: 6
+                Type: 12
+              - Name: sizeXZ
+                Value: 256
+                Access: 6
+                Type: 8
+              - Name: frequency
+                Value: 0.0250000004
+                Access: 6
+                Type: 12
+              - Name: persistence
+                Value: 3
+                Access: 6
+                Type: 12
               - Name: scale
                 Access: 1
                 Type: 17
               - Name: playerTransform
                 Access: 1
                 Type: 18
+              - Name: playerLastPosition
+                Access: 1
+                Type: 17
+  - Entity: 6200287250856401356
+    Name: PlaneDebug
+    ParentID: 16783529577957642553
+    Components:
+      TransformComponent:
+        Position: [4890.01904, 0, 0]
+        Rotation: [0, -0, 0]
+        Scale: [4096, 0.0500000007, 4096]
+      MeshRendererComponent:
+        Uuid: 6200287250856401356
+        CastShadows: true
+        AiMeshName: ""
+        MeshName: ""
+        Instanced: true
+        MeshId: 3
+        Material: 0
 Models:
   []
 Meshes:
-  - Mesh: 14814125946463635273
+  - Mesh: 8654306986525004550
     MeshId: 1
     Name: ""
     TemporaryMesh: false
     ModelUuid: 0
-  - Mesh: 18278848923912407238
+  - Mesh: 8654306986525004550
+    MeshId: 1
+    Name: ""
+    TemporaryMesh: false
+    ModelUuid: 0
+  - Mesh: 14662736752433412274
     MeshId: 3
     Name: ""
     TemporaryMesh: false
     ModelUuid: 0
-  - Mesh: 14814125946463635273
+  - Mesh: 8654306986525004550
     MeshId: 1
     Name: ""
     TemporaryMesh: false
     ModelUuid: 0
-  - Mesh: 14814125946463635273
+  - Mesh: 8654306986525004550
     MeshId: 1
     Name: ""
     TemporaryMesh: false
     ModelUuid: 0
-  - Mesh: 14814125946463635273
+  - Mesh: 8654306986525004550
     MeshId: 1
     Name: ""
     TemporaryMesh: false
     ModelUuid: 0
-  - Mesh: 14814125946463635273
+  - Mesh: 8654306986525004550
     MeshId: 1
     Name: ""
     TemporaryMesh: false
     ModelUuid: 0
-  - Mesh: 14814125946463635273
+  - Mesh: 8654306986525004550
     MeshId: 1
     Name: ""
     TemporaryMesh: false
     ModelUuid: 0
-  - Mesh: 14814125946463635273
-    MeshId: 1
+  - Mesh: 14662736752433412274
+    MeshId: 3
     Name: ""
     TemporaryMesh: false
     ModelUuid: 0
